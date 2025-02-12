@@ -25,19 +25,33 @@ export const BurgerConstructor: FC = () => {
   const isAuth = useSelector(isAuthCheckedSelector);
 
   const onOrderClick = () => {
-    if (!isAuth) {
-      return navigate('/login');
-    }
+    const handleNavigation = () => {
+      if (!isAuth) {
+        navigate('/login');
+        return false;
+      }
+      return true;
+    };
 
-    const { bun, ingredients } = constructorItems;
-    if (!constructorItems.bun || orderRequest) return;
-    const orderData: string[] = [
-      bun?._id!,
-      ...ingredients.map((ingredient) => ingredient._id),
-      bun?._id!
-    ];
-    dispatch(orderBurgerThunk(orderData));
+    const isOrderValid = () => {
+      if (!constructorItems.bun || orderRequest) {
+        return false;
+      }
+      return true;
+    };
+
+    if (handleNavigation() && isOrderValid()) {
+      const { bun, ingredients } = constructorItems;
+      if (!constructorItems.bun || orderRequest) return;
+      const orderData: string[] = [
+        bun?._id!,
+        ...ingredients.map((ingredient) => ingredient._id),
+        bun?._id!
+      ];
+      dispatch(orderBurgerThunk(orderData));
+    }
   };
+
   const closeOrderModal = () => {
     navigate('/', { replace: true });
     dispatch(clearOrder());
