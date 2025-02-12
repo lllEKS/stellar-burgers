@@ -35,7 +35,6 @@ export const loginUserThunk = createAsyncThunk(
   'user/loginUser',
   async ({ email, password }: TLoginData) => {
     const responce = await loginUserApi({ email, password });
-    console.log(responce);
     const { refreshToken, accessToken, user }: TAuthResponse = responce;
 
     setCookie('accessToken', accessToken);

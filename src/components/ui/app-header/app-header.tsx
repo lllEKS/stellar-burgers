@@ -22,9 +22,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
             <Link
               className={clsx(
                 styles.link,
-                currentLocation === '/'
-                  ? [styles.link_active, styles.link]
-                  : styles.link
+                currentLocation === '/' ? [styles.link_active] : styles.link
               )}
               to={'/'}
             >
@@ -40,9 +38,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
             <Link
               className={clsx(
                 styles.link,
-                currentLocation === '/feed'
-                  ? [styles.link_active, styles.link]
-                  : styles.link
+                currentLocation === '/feed' ? [styles.link_active] : styles.link
               )}
               to={'/feed'}
             >
@@ -63,7 +59,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
             className={clsx(
               styles.link,
               currentLocation === '/profile'
-                ? [styles.link_active, styles.link]
+                ? [styles.link_active]
                 : styles.link
             )}
             to={'/profile'}

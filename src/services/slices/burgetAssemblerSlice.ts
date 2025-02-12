@@ -40,22 +40,20 @@ const burgerAssemblerSlice = createSlice({
       const array = state.burgerAssembler.ingredients;
       const index = action.payload;
 
-      // Проверяем, можем ли переместить ингредиент вверх
       if (index > 0) {
         const ingredientToMove = array[index];
-        array.splice(index, 1); // Удаляем ингредиент из текущей позиции
-        array.splice(index - 1, 0, ingredientToMove); // Вставляем ингредиент на новую позицию
+        array.splice(index, 1);
+        array.splice(index - 1, 0, ingredientToMove);
       }
     },
     downIngredient: (state, action: PayloadAction<number>) => {
       const array = state.burgerAssembler.ingredients;
       const index = action.payload;
 
-      // Проверяем, можем ли переместить ингредиент вниз
       if (index < array.length - 1) {
         const ingredientToMove = array[index];
-        array.splice(index, 1); // Удаляем ингредиент из текущей позиции
-        array.splice(index + 1, 0, ingredientToMove); // Вставляем ингредиент на новую позицию
+        array.splice(index, 1);
+        array.splice(index + 1, 0, ingredientToMove);
       }
     },
     removeIngredient: (
