@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import styles from './app-header.module.css';
 import { TAppHeaderUIProps } from './type';
@@ -19,11 +19,10 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
       <nav className={`${styles.menu} p-4`}>
         <div className={styles.menu_part_left}>
           <>
-            <Link
-              className={clsx(
-                styles.link,
-                currentLocation === '/' ? [styles.link_active] : styles.link
-              )}
+            <NavLink
+              className={({ isActive }) =>
+                clsx(styles.link, isActive ? styles.link_active : '')
+              }
               to={'/'}
             >
               <BurgerIcon
@@ -32,21 +31,20 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
               <p className='text text_type_main-default ml-2 mr-10'>
                 Конструктор
               </p>
-            </Link>
+            </NavLink>
           </>
           <>
-            <Link
-              className={clsx(
-                styles.link,
-                currentLocation === '/feed' ? [styles.link_active] : styles.link
-              )}
+            <NavLink
+              className={({ isActive }) =>
+                clsx(styles.link, isActive ? styles.link_active : '')
+              }
               to={'/feed'}
             >
               <ListIcon
                 type={currentLocation === '/feed' ? 'primary' : 'secondary'}
               />
               <p className='text text_type_main-default ml-2'>Лента заказов</p>
-            </Link>
+            </NavLink>
           </>
         </div>
         <Link className={styles.link} to={'/'}>
@@ -55,13 +53,10 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
           </div>
         </Link>
         <div className={styles.link_position_last}>
-          <Link
-            className={clsx(
-              styles.link,
-              currentLocation === '/profile'
-                ? [styles.link_active]
-                : styles.link
-            )}
+          <NavLink
+            className={({ isActive }) =>
+              clsx(styles.link, isActive ? styles.link_active : '')
+            }
             to={'/profile'}
           >
             <ProfileIcon
@@ -70,7 +65,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => {
             <p className='text text_type_main-default ml-2'>
               {userName || 'Личный кабинет'}
             </p>
-          </Link>
+          </NavLink>
         </div>
       </nav>
     </header>

@@ -5,7 +5,16 @@ import { IngredientDetailsUI } from '../ui/ingredient-details';
 import { useSelector } from '../../services/store';
 import { ingredientsSelector } from '../../services/slices/ingredientsSlice';
 
-export const IngredientDetails: FC = () => {
+type IngredientDetailsProps = {
+  title?: string;
+  isModal?: boolean;
+};
+
+export const IngredientDetails: FC<IngredientDetailsProps> = ({
+  title,
+
+  isModal
+}) => {
   /** TODO: взять переменную из стора */
   const { id } = useParams();
   const ingredients = useSelector(ingredientsSelector);
@@ -17,5 +26,13 @@ export const IngredientDetails: FC = () => {
     return <Preloader />;
   }
 
-  return <IngredientDetailsUI ingredientData={ingredientData} />;
+  return (
+    <div>
+      <IngredientDetailsUI
+        title={title}
+        ingredientData={ingredientData}
+        isModal={isModal}
+      />
+    </div>
+  );
 };

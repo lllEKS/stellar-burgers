@@ -71,5 +71,7 @@ export const orderSelector = (state: RootState) => state.feeds.order;
 export const isLoadingSelector = (state: RootState) => state.feeds.isLoading;
 export const totalSelector = (state: RootState) => state.feeds.total;
 export const totalTodaySelector = (state: RootState) => state.feeds.totalToday;
+export const orderNumberSelector = (state: RootState) =>
+  state.feeds.order?.number;
 
 export default feedsSlice.reducer;

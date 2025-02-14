@@ -7,8 +7,14 @@ import { useSelector, useDispatch } from '../../services/store';
 import { getOrderByNumberThunk } from '../../services/slices/feedSlice';
 import { orderSelector } from '../../services/slices/feedSlice';
 import { ingredientsSelector } from '../../services/slices/ingredientsSlice';
+import style from './order-info.module.css';
 
-export const OrderInfo: FC = () => {
+type TOrderInfoProps = {
+  style?: React.CSSProperties;
+  isModal?: boolean;
+};
+
+export const OrderInfo: FC<TOrderInfoProps> = ({ style, isModal }) => {
   const dispatch = useDispatch();
   const { number } = useParams();
 
@@ -65,5 +71,9 @@ export const OrderInfo: FC = () => {
     return <Preloader />;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo} />;
+  return (
+    <div style={style}>
+      <OrderInfoUI orderInfo={orderInfo} isModal={isModal} />
+    </div>
+  );
 };

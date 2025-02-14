@@ -17,7 +17,7 @@ const initialState: TOrderState = {
 
 export const orderBurgerThunk = createAsyncThunk(
   'orders/postOrderBurger',
-  async (order: string[]) => orderBurgerApi(order)
+  async (order: string[]) => await orderBurgerApi(order)
 );
 
 const orderSlice = createSlice({
