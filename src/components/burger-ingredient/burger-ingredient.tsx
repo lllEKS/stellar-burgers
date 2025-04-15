@@ -6,7 +6,7 @@ import { TBurgerIngredientProps } from './type';
 import { addIngredient } from '../../services/slices/burgetAssemblerSlice';
 
 export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
-  ({ ingredient, count }) => {
+  ({ ingredient, count, index }) => {
     const dispatch = useDispatch();
     const location = useLocation();
 
@@ -20,6 +20,7 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
         count={count}
         locationState={{ background: location }}
         handleAdd={handleAdd}
+        index={index}
       />
     );
   }

@@ -10,6 +10,7 @@ import { ingredientsLoadingSelector } from '../../services/slices/ingredientsSli
 
 export const ConstructorPage: FC = () => {
   /** TODO: взять переменную из стора */
+
   const isIngredientsLoading = useSelector(ingredientsLoadingSelector);
 
   return (

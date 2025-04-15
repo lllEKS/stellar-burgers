@@ -12,7 +12,6 @@ type IngredientDetailsProps = {
 
 export const IngredientDetails: FC<IngredientDetailsProps> = ({
   title,
-
   isModal
 }) => {
   /** TODO: взять переменную из стора */
