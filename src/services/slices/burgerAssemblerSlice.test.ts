@@ -82,7 +82,7 @@ test('проверка добавления ингредиента - addIngredie
     const action = removeIngredient(MOCK_INGREDIENTS[1]);
     const newState = reducer(prevState, action);
 
-    expect(newState.burgerAssembler.ingredients).toEqual([]); // Ингредиенты должны быть пустыми
+    expect(newState.burgerAssembler.ingredients).toEqual([]);
   });
 
 test('прокерка очистки сборщика бургеров - clearburgerAssembler', () => {

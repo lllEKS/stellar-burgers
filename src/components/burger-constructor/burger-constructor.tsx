@@ -48,7 +48,12 @@ export const BurgerConstructor: FC = () => {
         ...ingredients.map((ingredient) => ingredient._id),
         bun?._id!
       ];
-      dispatch(orderBurgerThunk(orderData));
+
+      const createOrder = async () => {
+        await dispatch(orderBurgerThunk(orderData));
+        dispatch(clearburgerAssembler());
+      };
+      createOrder();
     }
   };
 
