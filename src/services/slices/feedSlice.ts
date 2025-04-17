@@ -12,7 +12,7 @@ type TFeedsState = {
   error: string | null | undefined;
 };
 
-const initialState: TFeedsState = {
+export const initialState: TFeedsState = {
   orders: [],
   order: null,
   total: 0,

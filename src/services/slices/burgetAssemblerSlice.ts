@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { RootState } from '../store';
 import { TIngredient, TConstructorIngredient } from '../../utils/types';
 
-type TBurgerAssemblerState = {
+export type TBurgerAssemblerState = {
   burgerAssembler: {
     bun: TConstructorIngredient | null;
     ingredients: TConstructorIngredient[];
@@ -11,10 +11,10 @@ type TBurgerAssemblerState = {
   error: string | null;
 };
 
-const initialState: TBurgerAssemblerState = {
+export const initialState: TBurgerAssemblerState = {
   burgerAssembler: {
     bun: null,
-    ingredients: []
+    ingredients: [] as TConstructorIngredient[]
   },
   error: null
 };
